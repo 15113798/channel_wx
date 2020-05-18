@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: db, core, admin, wx
+  messages:
+    encoding: UTF-8
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  ERROR
+    org.mybatis:  ERROR
+    com.baijuvip.jinxiang.core:  ERROR
+    com.baijuvip.jinxiang.db:  ERROR
+    com.baijuvip.jinxiang.admin:  ERROR
+    com.baijuvip.jinxiang.wx:  ERROR
+    com.baijuvip.jinxiang:  ERROR

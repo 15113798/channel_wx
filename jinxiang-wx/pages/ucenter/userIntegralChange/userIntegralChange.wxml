@@ -1,0 +1,15 @@
+<view class="add-address">
+  <view class="add-form">
+    <view class="form-item">
+      <input class="input" bindinput="bindinputIntegral" placeholder="请输入积分" value="" auto-focus/>
+    </view>
+    <view class="form-item">
+      <input class="input" bindinput="bindinputMobile" value="" placeholder="请输入会员手机号码" />
+    </view>
+  </view>
+
+  <view class="btns">
+    <button class="cannel" bindtap="cancel">取消</button>
+    <button class="save" bindtap="save">保存</button>
+  </view>
+</view>

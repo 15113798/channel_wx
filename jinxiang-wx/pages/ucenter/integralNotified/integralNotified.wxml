@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="b">
+    <scroll-view class="integral-list" scroll-y="true" scroll-top="{{scrollTop}}">
+      <view class="item {{ status == 0 ? 'active' : ''}}" wx:for="{{integralNotifiedList}}" wx:for-index="index" wx:for-item="item" wx:key="id" bindtap="sendTemplateMessage" data-id="{{item.id}}" data-index="{{index}}">
+        <view class="content">
+          <view class="left">
+            <view class="oldIntegral">原积分：{{item.oldIntegral}}分</view>
+          </view>
+          <view class="right">
+            <view class="name">变动积分：{{item.integral}}分</view>
+          </view>
+        </view>
+        <view class="content">
+          <view class="left">
+            <view class="oldIntegral">积分余额：{{item.oldIntegral + item.integral}}分</view>
+          </view>
+          <view class="right">
+            <view class="name">时间：{{item.addTime}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
