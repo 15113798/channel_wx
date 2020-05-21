@@ -6,7 +6,7 @@
 // 云平台部署时使用
 // var WxApiRoot = 'http://118.24.0.153:8080/wx/';
 // 云平台上线时使用
-var WxApiRoot = 'https://appletqt.qudaozhuan.com/wx/';
+var WxApiRoot = 'https://appletqd.qudaozhuan.com/wx/';
 
 module.exports = {
   IndexUrl: WxApiRoot + 'home/index', //首页数据接口
