@@ -1,11 +1,11 @@
 jinxiang:
   # 开发者应该设置成自己的wx相关信息
   wx:
-    app-id: wx7e12dbb195caf0ef
-    app-secret: 91b7f51a01026851866c8ad41f131c03
-    mch-id: 111111
-    mch-key: xxxxxx
-    notify-url: http://www.example.com/wx/order/pay-notify
+    app-id: wx1382261b27ce7e8b
+    app-secret: 1cf7b5457e53345b2e67e628dded1a45
+    mch-id: 1528873161
+    mch-key: 3qdhzp13ycxpfbnn3zoupxhcz4hbozea
+    notify-url: http://appletxcx.qudaozhuan.com/wx/order/pay-notify
     # 商户证书文件路径
     # 请参考“商户证书”一节 https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_3
     key-path: xxxxx
@@ -92,7 +92,7 @@ jinxiang:
     local:
       storagePath: storage
       # 这个地方应该是wx模块的WxStorageController的fetch方法对应的地址
-      address: https://jinxiang.baijuvip.com/wx/storage/fetch/
+      address: https://appletqd.qudaozhuan.com/wx/storage/fetch/
     # 阿里云对象存储配置信息
     aliyun:
       endpoint: oss-cn-shenzhen.aliyuncs.com

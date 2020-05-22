@@ -26,6 +26,7 @@
     <result column="integral" jdbcType="INTEGER" property="integral" />
     <result column="admin_id" jdbcType="INTEGER" property="adminId" />
     <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="publish_good_state" jdbcType="VARCHAR" property="publishGoodState" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -100,7 +101,7 @@
     -->
     id, username, `password`, gender, birthday, last_login_time, last_login_ip, user_level, 
     nickname, mobile, avatar, weixin_openid, session_key, `status`, add_time, update_time, 
-    deleted, integral, admin_id, admin_name
+    deleted, integral, admin_id, admin_name,publish_good_state
   </sql>
   <select id="selectByExample" parameterType="com.baijuvip.jinxiang.db.domain.JinxiangUserExample" resultMap="BaseResultMap">
     <!--
@@ -537,6 +538,9 @@
       </if>
       <if test="adminName != null">
         admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="publishGoodState != null">
+        publish_good_state = #{publishGoodState,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

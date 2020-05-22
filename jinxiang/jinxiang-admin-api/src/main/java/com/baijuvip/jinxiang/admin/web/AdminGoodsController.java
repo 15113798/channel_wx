@@ -38,7 +38,7 @@ public class AdminGoodsController {
     @RequiresPermissions("admin:goods:list")
     @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "查询")
     @GetMapping("/list")
-    public Object list(String goodsSn, String name,
+    public Object list(String goodsSn, String name,String isOnSale,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,

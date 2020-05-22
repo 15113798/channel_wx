@@ -9,6 +9,16 @@ public class UserInfo {
     private String language;
     private Byte gender;
 
+    private Integer publishGoodState;
+
+    public Integer getPublishGoodState() {
+        return publishGoodState;
+    }
+
+    public void setPublishGoodState(Integer publishGoodState) {
+        this.publishGoodState = publishGoodState;
+    }
+
     public String getCountry() {
         return country;
     }

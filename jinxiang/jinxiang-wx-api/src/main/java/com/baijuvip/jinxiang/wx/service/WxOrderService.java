@@ -334,13 +334,13 @@ public class WxOrderService {
         BigDecimal actualPrice = orderTotalPrice.subtract(integralPrice);
         
         // 计算所需花费的积分
-        JinxiangSystem config = this.systemConfigService.get(17);
+        /*JinxiangSystem config = this.systemConfigService.get(17);
         Integer integral = actualPrice.multiply(new BigDecimal(config.getKeyValue()))
         		.setScale(0, BigDecimal.ROUND_UP)
                 .intValue();
         if(user.getIntegral() - integral < 0) {
         	return ResponseUtil.fail(600, "用户积分不足");
-        }
+        }*/
 
         Integer orderId = null;
         JinxiangOrder order = null;
@@ -360,7 +360,7 @@ public class WxOrderService {
         order.setIntegralPrice(integralPrice);
         order.setOrderPrice(orderTotalPrice);
         order.setActualPrice(actualPrice);
-        order.setIntegral(integral);
+        order.setIntegral(0);
 
         // 有团购活动
         if (grouponRules != null) {
@@ -374,7 +374,7 @@ public class WxOrderService {
         orderId = order.getId();
         
         // 添加积分兑换记录
-        JinxiangIntegral userIntegral = new JinxiangIntegral();
+        /*JinxiangIntegral userIntegral = new JinxiangIntegral();
         userIntegral.setUserId(userId);
         userIntegral.setIntegral(0 - integral);
         userIntegral.setOldIntegral(user.getIntegral());
@@ -386,7 +386,7 @@ public class WxOrderService {
         	order.setPayTime(LocalDateTime.now());
             order.setOrderStatus(OrderUtil.STATUS_PAY);
             this.orderService.updateWithOptimisticLocker(order);
-        }
+        }*/
 
         // 添加订单商品表项
         for (JinxiangCart cartGoods : checkedGoodsList) {

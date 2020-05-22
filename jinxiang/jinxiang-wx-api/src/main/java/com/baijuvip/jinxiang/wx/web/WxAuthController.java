@@ -136,6 +136,7 @@ public class WxAuthController {
             return ResponseUtil.fail();
         }
 
+        //在确保user表中肯定有该用户的情况下。去查询一把user表，获取到该user是否具备发布宝贝的权限。
         JinxiangUser user = userService.queryByOid(openId);
         if (user == null) {
             user = new JinxiangUser();
@@ -153,12 +154,15 @@ public class WxAuthController {
 
             userService.add(user);
 
+            userInfo.setPublishGoodState(user.getPublishGoodState());
+
             // 新用户发送注册优惠券
             couponAssignService.assignForRegister(user.getId());
         } else {
             user.setLastLoginTime(LocalDateTime.now());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
             user.setSessionKey(sessionKey);
+            userInfo.setPublishGoodState(0);
             if (userService.updateById(user) == 0) {
                 return ResponseUtil.updatedDataFailed();
             }

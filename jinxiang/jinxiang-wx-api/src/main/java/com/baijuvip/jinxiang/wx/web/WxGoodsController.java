@@ -321,4 +321,22 @@ public class WxGoodsController {
 		return ResponseUtil.ok(goodsCount);
 	}
 
+
+
+	/**
+	 *
+	 * 新增商品
+	 *
+	 */
+	@GetMapping("addGoods")
+	public Object addGoods(String remark,String goods_img,String[] gallery) {
+		JinxiangGoods good = new JinxiangGoods();
+		good.setAppletRemark(remark);
+		good.setPicUrl(goods_img);
+		good.setGallery(gallery);
+		goodsService.add(good);
+
+		return ResponseUtil.ok();
+	}
+
 }

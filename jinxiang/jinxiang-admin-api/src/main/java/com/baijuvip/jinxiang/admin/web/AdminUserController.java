@@ -93,4 +93,13 @@ public class AdminUserController {
         logHelper.logAuthSucceed("编辑会员", user.getNickname());
         return ResponseUtil.ok(user);
     }
+
+
+    //给用户赋予发布宝贝的权限
+    @GetMapping("/fuquanUser")
+    public Object fuquanUser(String userId, Integer publishState) {
+        userService.updatePulishState(userId,publishState);
+        return ResponseUtil.ok();
+    }
+
 }

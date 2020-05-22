@@ -85,6 +85,7 @@ public class JinxiangUserService {
         PageHelper.startPage(page, size);
         List<JinxiangUser> userList = userMapper.selectByExample(example);
         for(JinxiangUser user : userList) {
+            //将微信昵称转义
         	user.setNickname(WechatNickNameUtils.decode(user.getNickname().replaceAll("%", "%25")));
         }
         return userList;
@@ -135,5 +136,14 @@ public class JinxiangUserService {
 
     public void deleteById(Integer id) {
         userMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+
+    public void updatePulishState(String userId,Integer publishState)
+    {
+        JinxiangUser user = new JinxiangUser();
+        user.setId(Integer.valueOf(userId));
+        user.setPublishGoodState(publishState);
+        userMapper.updateByPrimaryKeySelective(user);
     }
 }
