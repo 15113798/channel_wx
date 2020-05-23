@@ -127,12 +127,20 @@ public class JinxiangGoodsService {
         return goodsMapper.selectByExampleSelective(example, columns);
     }
 
-    public List<JinxiangGoods> querySelective(String goodsSn, String name, Integer page, Integer size, String sort, String order) {
+    public List<JinxiangGoods> querySelective(String goodsSn, String name,String is_on_sale, Integer page, Integer size, String sort, String order) {
         JinxiangGoodsExample example = new JinxiangGoodsExample();
         JinxiangGoodsExample.Criteria criteria = example.createCriteria();
 
+
         if (!StringUtils.isEmpty(goodsSn)) {
             criteria.andGoodsSnEqualTo(goodsSn);
+        }
+        if (!StringUtils.isEmpty(is_on_sale)) {
+            Boolean isOnSaleBool = true;
+            if(is_on_sale.equals("0")){
+                isOnSaleBool = false;
+            }
+            criteria.andIsOnSaleEqualTo(isOnSaleBool);
         }
         if (!StringUtils.isEmpty(name)) {
             criteria.andNameLike("%" + name + "%");

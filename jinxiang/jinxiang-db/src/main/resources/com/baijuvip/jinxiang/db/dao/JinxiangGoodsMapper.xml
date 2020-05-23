@@ -26,7 +26,6 @@
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
-
     <result column="applet_remark" jdbcType="VARCHAR" property="appletRemark" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.baijuvip.jinxiang.db.domain.JinxiangGoods">
@@ -316,7 +315,7 @@
       #{sortOrder,jdbcType=SMALLINT}, #{picUrl,jdbcType=VARCHAR}, #{shareUrl,jdbcType=VARCHAR}, 
       #{isNew,jdbcType=BIT}, #{isHot,jdbcType=BIT}, #{unit,jdbcType=VARCHAR}, #{counterPrice,jdbcType=DECIMAL}, 
       #{retailPrice,jdbcType=DECIMAL}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=BIT}, #{detail,jdbcType=LONGVARCHAR}), #{appletRemark,jdbcType=LONGVARCHAR})
+      #{deleted,jdbcType=BIT}, #{detail,jdbcType=LONGVARCHAR}), #{appletRemark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.baijuvip.jinxiang.db.domain.JinxiangGoods">
     <!--
@@ -454,7 +453,7 @@
         #{detail,jdbcType=LONGVARCHAR},
       </if>
       <if test="appletRemark != null">
-        #{applet_remark,jdbcType=LONGVARCHAR},
+        #{appletRemark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -539,7 +538,7 @@
         detail = #{record.detail,jdbcType=LONGVARCHAR},
       </if>
       <if test="record.appletRemark != null">
-        applet_remark = #{record.appletRemark,jdbcType=LONGVARCHAR},
+        applet_remark = #{record.appletRemark,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -573,7 +572,7 @@
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT},
       detail = #{record.detail,jdbcType=LONGVARCHAR},
-      appletR_remark = #{record.appletRemark,jdbcType=LONGVARCHAR},
+      appletR_remark = #{record.appletRemark,jdbcType=VARCHAR},
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -604,7 +603,7 @@
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT},
-      applet_remark = #{record.appletRemark,jdbcType=BIT},
+      applet_remark = #{record.appletRemark,jdbcType=VARCHAR},
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -677,7 +676,7 @@
         detail = #{detail,jdbcType=LONGVARCHAR},
       </if>
       <if test="appletRemark != null">
-        applet_remark = #{appletRemark,jdbcType=LONGVARCHAR},
+        applet_remark = #{appletRemark,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -708,7 +707,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT},
       detail = #{detail,jdbcType=LONGVARCHAR},
-      applet_remark = #{appletRemark,jdbcType=LONGVARCHAR},
+      applet_remark = #{appletRemark,jdbcType=VARCHAR},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.baijuvip.jinxiang.db.domain.JinxiangGoods">
@@ -736,7 +735,7 @@
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT},
-    applet_remark = #{appletRemark,jdbcType=BIT},
+      applet_remark = #{appletRemark,jdbcType=VARCHAR},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.baijuvip.jinxiang.db.domain.JinxiangGoodsExample" resultMap="BaseResultMap">

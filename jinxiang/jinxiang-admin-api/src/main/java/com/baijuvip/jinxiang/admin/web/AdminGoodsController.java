@@ -38,12 +38,12 @@ public class AdminGoodsController {
     @RequiresPermissions("admin:goods:list")
     @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "查询")
     @GetMapping("/list")
-    public Object list(String goodsSn, String name,String isOnSale,
+    public Object list(String goodsSn, String name,String is_on_sale,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        return adminGoodsService.list(goodsSn, name, page, limit, sort, order);
+        return adminGoodsService.list(goodsSn, name,is_on_sale, page, limit, sort, order);
     }
 
     @GetMapping("/catAndBrand")
