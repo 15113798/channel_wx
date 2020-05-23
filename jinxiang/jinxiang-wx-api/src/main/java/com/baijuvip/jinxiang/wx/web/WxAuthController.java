@@ -154,7 +154,6 @@ public class WxAuthController {
 
             userService.add(user);
 
-            userInfo.setPublishGoodState(user.getPublishGoodState());
 
             // 新用户发送注册优惠券
             couponAssignService.assignForRegister(user.getId());
@@ -162,7 +161,7 @@ public class WxAuthController {
             user.setLastLoginTime(LocalDateTime.now());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
             user.setSessionKey(sessionKey);
-            userInfo.setPublishGoodState(0);
+            userInfo.setPublishGoodState(user.getPublishGoodState());
             if (userService.updateById(user) == 0) {
                 return ResponseUtil.updatedDataFailed();
             }
