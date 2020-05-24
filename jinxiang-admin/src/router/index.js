@@ -252,7 +252,17 @@ export const asyncRouterMap = [
         name: 'goodsList',
         meta: {
           perms: ['GET /admin/goods/list', 'POST /admin/goods/delete'],
-          title: '商品列表',
+          title: '在售商品列表',
+          noCache: true
+        }
+      },
+      {
+        path: 'Unsoldlist',
+        component: () => import('@/views/goods/Unsoldlist'),
+        name: 'goodsList',
+        meta: {
+          perms: ['GET /admin/goods/list', 'POST /admin/goods/delete'],
+          title: '未售商品列表',
           noCache: true
         }
       },

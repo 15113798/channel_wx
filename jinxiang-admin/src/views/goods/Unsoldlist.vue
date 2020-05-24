@@ -140,7 +140,7 @@ export default {
         name: undefined,
         sort: 'add_time',
         order: 'desc',
-        is_on_sale: 1
+        is_on_sale: 0
       },
       goodsDetail: '',
       detailDialogVisible: false,
