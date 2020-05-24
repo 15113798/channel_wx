@@ -1,5 +1,6 @@
 package com.baijuvip.jinxiang.wx.web;
 
+import com.baijuvip.jinxiang.wx.dto.GoodDto;
 import com.github.pagehelper.PageInfo;
 import com.mysql.jdbc.StringUtils;
 import org.apache.commons.logging.Log;
@@ -12,10 +13,7 @@ import com.baijuvip.jinxiang.db.service.*;
 import com.baijuvip.jinxiang.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -328,8 +326,11 @@ public class WxGoodsController {
 	 * 新增商品
 	 *
 	 */
-	@GetMapping("addGoods")
-	public Object addGoods(String remark,String goods_img,String[] gallery) {
+	@PostMapping("addGoods")
+	public Object addGoods(@RequestBody GoodDto goodDto) {
+		String remark = goodDto.getRemark();
+		String goods_img = goodDto.getGoods_img();
+		String[]gallery = goodDto.getGallery();
 		JinxiangGoods good = new JinxiangGoods();
 		good.setAppletRemark(remark);
 		good.setPicUrl(goods_img);

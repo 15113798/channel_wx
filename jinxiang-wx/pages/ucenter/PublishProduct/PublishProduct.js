@@ -148,7 +148,7 @@ Page({
       remark: that.data.content,
       goods_img: that.data.goodsUrls,
       gallery: that.data.picUrls
-    }, 'GET').then(function(res) {
+    }, 'POST').then(function(res) {
       wx.hideLoading();
       if (res.errno === 0) {
         wx.showToast({

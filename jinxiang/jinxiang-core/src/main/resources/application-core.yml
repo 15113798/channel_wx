@@ -5,7 +5,7 @@ jinxiang:
     app-secret: 1cf7b5457e53345b2e67e628dded1a45
     mch-id: 1528873161
     mch-key: 3qdhzp13ycxpfbnn3zoupxhcz4hbozea
-    notify-url: http://appletxcx.qudaozhuan.com/wx/order/pay-notify
+    notify-url: http://101.201.155.25:8100/wx/order/pay-notify
     # 商户证书文件路径
     # 请参考“商户证书”一节 https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_3
     key-path: xxxxx
