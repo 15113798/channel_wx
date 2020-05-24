@@ -71,4 +71,10 @@ export function listHistory(query) {
     params: query
   })
 }
-
+export function userFuquanUser(query) {
+  return request({
+    url: '/user/fuquanUser',
+    method: 'get',
+    params: query
+  })
+}
