@@ -101,10 +101,21 @@ Page({
       });
     };
   },
+  // goIntegral() {
+  //   if (this.data.hasLogin) {
+  //     wx.navigateTo({
+  //       url: "/pages/ucenter/integralList/integralList"
+  //     });
+  //   } else {
+  //     wx.navigateTo({
+  //       url: "/pages/auth/login/login"
+  //     });
+  //   };
+  // },
   goIntegral() {
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/ucenter/integralList/integralList"
+        url: "/pages/ucenter/PublishProduct/PublishProduct"
       });
     } else {
       wx.navigateTo({

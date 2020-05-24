@@ -1,6 +1,6 @@
 // 以下是业务服务器API地址
 // 本机开发时使用
- //var WxApiRoot = 'http://localhost:8080/wx/';
+//var WxApiRoot = 'http://localhost:8080/wx/';
 // 局域网测试使用
 // var WxApiRoot = 'http://192.168.0.101:8080/wx/';
 // 云平台部署时使用
@@ -96,6 +96,8 @@ module.exports = {
   IntegralSave: WxApiRoot + 'admin/integral/save', //积分增减
   IntegralNotifiedList: WxApiRoot + 'admin/integral/notice/list', //积分通知列表
   IntegralNotice: WxApiRoot + 'integral/notice', //积分通知
+
+  GoodsaddGoods: WxApiRoot + 'goods/addGoods', // 发布宝贝,
 
   StorageUpload: WxApiRoot + 'storage/upload', //图片上传,
 

@@ -1,0 +1,33 @@
+<view class="container">
+	<view class="fb-body">
+		<textarea class="content" placeholder="备注内容 (格式：xx商品名:颜色:xx，库存xx;颜色:xx,库存xx;)" bindinput="contentInput" maxlength="500" auto-focus="true" value="{{content}}" />
+		<view class="text-count">{{contentLength}}/500</view>
+  	</view>
+  <view class="fb-goods">
+    <view class="label"> 商品图片： </view>
+    <view class="weui-uploader__files" id="uploaderFiles">
+      <block wx:for="{{goodsfiles}}" wx:key="*this">
+        <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+        </view>
+      </block>
+      <view class="weui-uploader__input-box" wx:if="{{ goodsfiles.length == 0 }}">
+        <view class="weui-uploader__input" bindtap="goodsImage"></view>
+      </view>
+    </view>
+  </view>
+  <view class="fb-gallery">
+   <view class="label"> 宣传画廊： </view>
+     <view class="weui-uploader__files" id="uploaderFiles">
+      <block wx:for="{{files}}" wx:key="*this">
+        <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+        </view>
+      </block>
+      <view class="weui-uploader__input-box" wx:if="{{ files.length < 5 }}">
+        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      </view>
+    </view>
+  </view>
+  <view class="fb-btn" bindtap="submitFeedback">提交</view>
+</view>
