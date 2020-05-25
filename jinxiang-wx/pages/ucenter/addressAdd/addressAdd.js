@@ -312,10 +312,10 @@ Page({
     }
 
 
-    if (address.areaCode == 0) {
-      util.showErrorToast('请输入省市区');
-      return false;
-    }
+    // if (address.areaCode == 0) {
+    //   util.showErrorToast('请输入省市区');
+    //   return false;
+    // }
 
     if (address.addressDetail == '') {
       util.showErrorToast('请输入详细地址');
@@ -332,10 +332,14 @@ Page({
       id: address.id,
       name: address.name,
       tel: address.tel,
-      province: address.province,
-      city: address.city,
-      county: address.county,
-      areaCode: address.areaCode,
+      // province: address.province,
+      // city: address.city,
+      // county: address.county,
+      // areaCode: address.areaCode,
+      province: 0,
+      city: 0,
+      county: 0,
+      areaCode: 0,
       addressDetail: address.addressDetail,
       isDefault: address.isDefault
     }, 'POST').then(function(res) {
