@@ -212,7 +212,11 @@ public class WxOrderService {
         // 订单状态为已发货且物流信息不为空
         //"YTO", "800669400640887922"
         if (order.getOrderStatus().equals(OrderUtil.STATUS_SHIP)) {
-            ExpressInfo ei = expressService.getExpressInfo(order.getShipChannel(), order.getShipSn());
+            //动态获取物流信息
+            //ExpressInfo ei = expressService.getExpressInfo(order.getShipChannel(), order.getShipSn());
+            ExpressInfo ei = new ExpressInfo();
+            ei.setShipperName(order.getShipChannel());
+            ei.setLogisticCode(order.getShipSn());
             result.put("expressInfo", ei);
         }
 
