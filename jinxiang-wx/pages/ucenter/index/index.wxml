@@ -78,9 +78,10 @@
       <image class='user_column_item_image' src='/static/images/address.png'></image>
       <view class='user_column_item_text'>地址管理</view>
     </view>
+    <view class='user_column_item' wx:if="{{hasLogin !=true || userInfo.publishGoodState != 1}}">
+    </view>
   </view>
   <view class='separate'></view>
-
   <view class='user_row'>
     <view class='user_row_left'>必备工具</view>
   </view>

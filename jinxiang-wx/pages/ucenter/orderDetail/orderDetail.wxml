@@ -83,13 +83,13 @@
         <view class="t">快递公司：{{expressInfo.shipperName}}</view>
         <view class="b">物流单号：{{expressInfo.logisticCode}}</view>
       </view>
-      <!-- <image class="ti" src="/static/images/address_right.png" background-size="cover"></image> -->
+      <image class="ti" src="/static/images/address_right.png" background-size="cover"></image>
     </view>
-    <!-- <view class="traces" wx:for="{{expressInfo.Traces}}" wx:key="item" wx:for-item="iitem" wx:if="{{ flag }}">
+    <view class="traces" wx:for="{{expressInfo.Traces}}" wx:key="item" wx:for-item="iitem" wx:if="{{ flag }}">
       <view class="trace">
         <view class="acceptStation">{{iitem.AcceptStation}}</view>
         <view class="acceptTime">{{iitem.AcceptTime}}</view>
       </view>
-    </view> -->
+    </view>
   </view>
 </view>
