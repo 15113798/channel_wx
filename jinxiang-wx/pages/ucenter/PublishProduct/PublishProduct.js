@@ -138,13 +138,13 @@ Page({
     var signFormText = '';
     for (var i = 0; i < signFormList.length; i++) {
       if (signFormList[i].color != null && signFormList[i].size && signFormList[i].value) {
-        signFormText += "颜色：" + signFormList[i].color + ", 规格：" + signFormList[i].size + ", 库存：" + signFormList[i].value + "。"
+        signFormText += "颜色：" + signFormList[i].color + ", 规格：" + signFormList[i].size + ", 库存：" + signFormList[i].value + ";"
       }else{
         util.showErrorToast('商品参数不能为空');
         return false;
       }
     }
-    var remark="商品名称："+that.data.content +","+signFormText;
+    var remark="商品名称："+that.data.content +";"+signFormText;
     console.log(remark);
     if (that.data.goodsUrls == '') {
       util.showErrorToast('请上传商品图片');
