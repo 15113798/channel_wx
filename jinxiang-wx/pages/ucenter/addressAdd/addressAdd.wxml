@@ -12,7 +12,8 @@
 		<view class="form-item">
 			<picker mode="region" class="picker_av" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
 				<view class="picker">
-					省市区：{{region[0]}} {{region[1]}} {{region[2]}}
+				 <view wx:if="{{region.length>0}}">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+				 <input class="input" placeholder="请选择省市区" style="height: 116rpx;" wx:else/>
 				</view>
 			</picker>
 		</view>

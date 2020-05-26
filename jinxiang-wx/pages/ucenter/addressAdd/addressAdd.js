@@ -79,7 +79,8 @@ Page({
       if (res.errno === 0) {
         if (res.data) {
           that.setData({
-            address: res.data
+            address: res.data,
+            region:[res.data.province,res.data.city,res.data.county]
           });
         }
       }
