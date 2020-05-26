@@ -66,7 +66,7 @@
 					<image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
 				</view>
 			</block>
-			<view class="weui-uploader__input-box" wx:if="{{ files.length < 5 }}">
+			<view class="weui-uploader__input-box" wx:if="{{ files.length < 10 }}">
 				<view class="weui-uploader__input" bindtap="chooseImage"></view>
 			</view>
 		</view>

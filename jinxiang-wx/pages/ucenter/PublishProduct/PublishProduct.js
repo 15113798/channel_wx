@@ -62,7 +62,7 @@ Page({
     })
   },
   chooseImage: function (e) {
-    if (this.data.files.length >= 5) {
+    if (this.data.files.length >= 10) {
       util.showErrorToast('只能上传五张图片')
       return false;
     }
