@@ -4,6 +4,8 @@ public class GoodDto {
     private String remark;
     private String goods_img;
     private String[] gallery;
+    private String[] goodsDetailImg;
+    private String goodsDetailRemark;
 
     public String getRemark() {
         return remark;
@@ -27,5 +29,21 @@ public class GoodDto {
 
     public void setGallery(String[] gallery) {
         this.gallery = gallery;
+    }
+
+    public String[] getGoodsDetailImg() {
+        return goodsDetailImg;
+    }
+
+    public void setGoodsDetailImg(String[] goodsDetailImg) {
+        this.goodsDetailImg = goodsDetailImg;
+    }
+
+    public String getGoodsDetailRemark() {
+        return goodsDetailRemark;
+    }
+
+    public void setGoodsDetailRemark(String goodsDetailRemark) {
+        this.goodsDetailRemark = goodsDetailRemark;
     }
 }

@@ -1,11 +1,13 @@
 <view class="container">
-	<!-- <view class="fb-body">
-		<textarea class="content" placeholder="备注内容 (格式：xx商品名:颜色:xx，库存xx;颜色:xx,库存xx;)" bindinput="contentInput" maxlength="500" auto-focus="true" value="{{content}}" />
-		<view class="text-count">{{contentLength}}/500</view>
-  </view> -->
+	<!-- <view class="fb-mobile" style="height: 118rpx;">
+			<view class="fb-body">
+				<textarea class="content" placeholder="商品详情备注栏" bindinput="contentInput" maxlength="500" auto-focus="true" value="{{content}}" />
+				<view class="text-count">{{contentLength}}/500</view>
+			</view>
+	</view> -->
 	<view class="fb-mobile" style="height: 118rpx;">
 		<view class="mobile-box">
-			<input class="mobile" maxlength="11" type="number" placeholder="请输入商品名称" bindinput="contentInput" value="{{content}}"/>
+			<input class="mobile" placeholder="请输入商品名称" bindinput="contentInput" value="{{content}}"/>
 		</view>
 	</view>
 	<view class="fb-tabel">
@@ -17,7 +19,7 @@
 				</view>
 				<view class="van_cell_value">
 					<view class="van_body">
-						<input class="mobile" maxlength="11"  placeholder="请输入商品颜色" data-index="{{index}}" bindinput="ColorInput" />
+						<input class="mobile"  placeholder="请输入商品颜色" data-index="{{index}}" bindinput="ColorInput" />
 					</view>
 				</view>
 			</view>
@@ -27,7 +29,7 @@
 				</view>
 				<view class="van_cell_value">
 					<view class="van_body">
-						<input class="mobile" maxlength="11" placeholder="请输入商品规格" data-index="{{index}}" bindinput="SizeInput"/>
+						<input class="mobile" placeholder="请输入商品规格" data-index="{{index}}" bindinput="SizeInput"/>
 					</view>
 				</view>
 			</view>
@@ -37,7 +39,7 @@
 				</view>
 				<view class="van_cell_value">
 					<view class="van_body">
-						<input class="mobile" maxlength="11"  placeholder="请输入商品库存" data-index="{{index}}" bindinput="ValueInput"/>
+						<input class="mobile"  placeholder="请输入商品库存" data-index="{{index}}" bindinput="ValueInput"/>
 					</view>
 				</view>
 			</view>
@@ -58,6 +60,7 @@
 			</view>
 		</view>
 	</view>
+
 	<view class="fb-gallery">
 		<view class="label"> 宣传画廊： </view>
 		<view class="weui-uploader__files" id="uploaderFiles">
@@ -71,6 +74,23 @@
 			</view>
 		</view>
 	</view>
+
+
+	<view class="fb-goodDetails">
+		<view class="label"> 详情图： </view>
+		<view class="weui-uploader__files" id="uploaderFiles">
+			<block wx:for="{{detailFiles}}" wx:key="*this">
+				<view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+					<image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+				</view>
+			</block>
+			<view class="weui-uploader__input-box" wx:if="{{ detailFiles.length < 10 }}">
+				<view class="weui-uploader__input" bindtap="chooseDetailImage"></view>
+			</view>
+		</view>
+	</view>
+
+
 
 	<view class="fb-btn" bindtap="submitFeedback">提交</view>
 </view>

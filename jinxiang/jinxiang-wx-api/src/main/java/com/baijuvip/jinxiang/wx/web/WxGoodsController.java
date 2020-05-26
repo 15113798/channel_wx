@@ -3,6 +3,7 @@ package com.baijuvip.jinxiang.wx.web;
 import com.baijuvip.jinxiang.wx.dto.GoodDto;
 import com.github.pagehelper.PageInfo;
 import com.mysql.jdbc.StringUtils;
+import jodd.util.StringUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.baijuvip.jinxiang.core.util.ResponseUtil;
@@ -11,6 +12,7 @@ import com.baijuvip.jinxiang.core.validator.Sort;
 import com.baijuvip.jinxiang.db.domain.*;
 import com.baijuvip.jinxiang.db.service.*;
 import com.baijuvip.jinxiang.wx.annotation.LoginUser;
+import org.bouncycastle.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -331,13 +333,58 @@ public class WxGoodsController {
 		String remark = goodDto.getRemark();
 		String goods_img = goodDto.getGoods_img();
 		String[]gallery = goodDto.getGallery();
+		String goodsDetailRemark = goodDto.getGoodsDetailRemark();
+		String[] goodsDetailImg = goodDto.getGoodsDetailImg();
+
+
 		JinxiangGoods good = new JinxiangGoods();
+		//前台传过来的详情图必须不能为空,分割字符串获取到每一张图片地址。然后拼接成对应的html格式
+		StringBuffer goodsDetailHtml = new StringBuffer();
+		if(0 != goodsDetailImg.length){
+			for (int i = 0; i < goodsDetailImg.length; i++) {
+				String img = goodsDetailImg[i];
+				// <p><img src="http://yanxuan.nosdn.127.net/03e6f02f8f77b71a82a05dd1a9705057.jpg" _src="http://yanxuan.nosdn.127.net/03e6f02f8f77b71a82a05dd1a9705057.jpg" style="" /></p>
+//				goodsDetailHtml.append("<p><img src=");
+//				goodsDetailHtml.append(img);
+//				goodsDetailHtml.append("_src=");
+//				goodsDetailHtml.append(img);
+//				goodsDetailHtml.append("style=\"\" /></p>");
+				goodsDetailHtml.append("<p><img src=\""+img+"\" _src=\""+img+"\" style=\"\" /></p>");
+			}
+			good.setDetail(goodsDetailHtml.toString());
+		}
+
 		good.setAppletRemark(remark);
 		good.setPicUrl(goods_img);
 		good.setGallery(gallery);
+		good.setAppletDetailRemark(goodsDetailRemark);
 		goodsService.add(good);
 
 		return ResponseUtil.ok();
 	}
+
+
+	public static void main(String[] args) {
+		String[]imgArr = new String[2];
+		imgArr[0] = "http://appletimg.qudaozhuan.com/qde9zqrlxj1fqywycmv8.jpg";
+		imgArr[1] = "http://appletimg.qudaozhuan.com/cdvizpp64evr9n9lof6f.jpg";
+		StringBuffer bf = getString(imgArr);
+		System.out.println(bf);
+
+	}
+
+
+	public static StringBuffer getString(String[]strings){
+		StringBuffer bf = new StringBuffer();
+		for (int i = 0; i < strings.length; i++) {
+			String img = strings[i];
+			bf.append("<p><img src=\""+img+"\" _src=\""+img+"\" style=\"\" /></p>");
+		}
+
+
+		return bf;
+	}
+
+
 
 }

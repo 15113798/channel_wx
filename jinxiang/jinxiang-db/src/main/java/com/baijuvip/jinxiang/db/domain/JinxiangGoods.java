@@ -213,6 +213,17 @@ public class JinxiangGoods {
 
     private String appletRemark;
 
+    private String appletDetailRemark;
+
+
+    public String getAppletDetailRemark() {
+        return appletDetailRemark;
+    }
+
+    public void setAppletDetailRemark(String appletDetailRemark) {
+        this.appletDetailRemark = appletDetailRemark;
+    }
+
     public String getAppletRemark() {
         return appletRemark;
     }

@@ -7,7 +7,10 @@ var app = getApp();
 Page({
   data: {
     content: '',
+    detailContent:'',
+    detailFiles:[],
     hasPicture: false,
+    detailUrls:[],
     picUrls: [],
     files: [],
     goodsUrls: '',
@@ -112,6 +115,62 @@ Page({
     })
 
   },
+
+
+  chooseDetailImage: function (e) {
+    if (this.data.detailFiles.length >= 10) {
+      util.showErrorToast('只能上传十张图片')    
+      return false;
+    }
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        that.setData({
+          detailFiles: that.data.detailFiles.concat(res.tempFilePaths)
+        });
+        that.detailupload(res);
+      }
+    })
+  },
+
+  detailupload: function (res) {
+    console.log( res.tempFilePaths[0]);
+    var that = this;
+    const uploadTask = wx.uploadFile({
+      url: api.StorageUpload,
+      filePath: res.tempFilePaths[0],
+      name: 'file',
+      success: function (res) {
+        var _res = JSON.parse(res.data);
+        if (_res.errno === 0) {
+          var url = _res.data.url
+          that.data.detailUrls.push(url)
+          that.setData({
+            hasPicture: true,
+            detailUrls: that.data.detailUrls
+          })
+        }
+      },
+      fail: function (e) {
+        wx.showModal({
+          title: '错误',
+          content: '上传失败',
+          showCancel: false
+        })
+      },
+    })
+
+    uploadTask.onProgressUpdate((res) => {
+      console.log('上传进度', res.progress)
+      console.log('已经上传的数据长度', res.totalBytesSent)
+      console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+    })
+
+  },
+  
   previewImage: function (e) {
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
@@ -154,6 +213,10 @@ Page({
       util.showErrorToast('请上传宣传图片');
       return false;
     }
+    if (that.data.detailUrls.length == 0) {
+      util.showErrorToast('请上传详情图片');
+      return false;
+    }
     wx.showLoading({
       title: '提交中...',
       mask: true,
@@ -162,7 +225,10 @@ Page({
     util.request(api.GoodsaddGoods, {
       remark: remark,
       goods_img: that.data.goodsUrls,
-      gallery: that.data.picUrls
+      gallery: that.data.picUrls,
+      goodsDetailImg :that.data.detailUrls,
+      //goodsDetailRemark :that.data.goodsDetailRemark,
+      goodsDetailRemark :'1',
     }, 'POST').then(function (res) {
       wx.hideLoading();
       if (res.errno === 0) {
@@ -187,6 +253,10 @@ Page({
               files: [],
               goodsUrls: '',
               goodsfiles: [],
+              goodsDetailImg : [],
+              goodsDetailRemark :'',
+              detailUrls: [],
+              detailFiles :[],
             });
           }
         });

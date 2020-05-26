@@ -27,6 +27,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="applet_remark" jdbcType="VARCHAR" property="appletRemark" />
+    <result column="applet_detail_remark" jdbcType="VARCHAR" property="appletDetailRemark" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.baijuvip.jinxiang.db.domain.JinxiangGoods">
     <!--
@@ -146,7 +147,7 @@
     -->
     id, goods_sn, `name`, category_id, brand_id, gallery, keywords, brief, is_on_sale, 
     sort_order, pic_url, share_url, is_new, is_hot, unit, counter_price, retail_price, 
-    add_time, update_time, deleted,applet_remark
+    add_time, update_time, deleted,applet_remark,applet_detail_remark
   </sql>
   <sql id="Blob_Column_List">
     <!--
@@ -390,6 +391,9 @@
       <if test="appletRemark != null">
         applet_remark,
       </if>
+      <if test="appletDetailRemark != null">
+        applet_detail_remark,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="goodsSn != null">
@@ -454,6 +458,9 @@
       </if>
       <if test="appletRemark != null">
         #{appletRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="appletDetailRemark != null">
+        #{appletDetailRemark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
