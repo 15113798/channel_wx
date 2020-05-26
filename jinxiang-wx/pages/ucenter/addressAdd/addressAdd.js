@@ -34,7 +34,14 @@ Page({
     ],
     regionType: 1,
     regionList: [],
-    selectRegionDone: false
+    selectRegionDone: false,
+    region: [],
+    customItem: '全部'
+  },
+  bindRegionChange: function (e) {
+    this.setData({
+      region: e.detail.value
+    })
   },
   bindinputMobile(event) {
     let address = this.data.address;
@@ -297,6 +304,7 @@ Page({
     wx.navigateBack();
   },
   saveAddress() {
+    console.log(this.data.region);
     console.log(this.data.address)
     let address = this.data.address;
 
@@ -310,12 +318,11 @@ Page({
       util.showErrorToast('请输入手机号码');
       return false;
     }
-
-
-    // if (address.areaCode == 0) {
-    //   util.showErrorToast('请输入省市区');
-    //   return false;
-    // }
+   
+    if (this.data.region.length == 0) {
+      util.showErrorToast('请输入省市区');
+      return false;
+    }
 
     if (address.addressDetail == '') {
       util.showErrorToast('请输入详细地址');
@@ -332,13 +339,10 @@ Page({
       id: address.id,
       name: address.name,
       tel: address.tel,
-      // province: address.province,
-      // city: address.city,
-      // county: address.county,
+      province: this.data.region[0],
+      city: this.data.region[1],
+      county: this.data.region[2],
       // areaCode: address.areaCode,
-      province: 0,
-      city: 0,
-      county: 0,
       areaCode: 0,
       addressDetail: address.addressDetail,
       isDefault: address.isDefault

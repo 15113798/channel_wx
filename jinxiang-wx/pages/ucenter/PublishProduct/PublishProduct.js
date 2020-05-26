@@ -6,6 +6,7 @@ var app = getApp();
 
 Page({
   data: {
+    Commodityname:'',//商品名称
     content: '',
     detailContent:'',
     detailFiles:[],
@@ -21,6 +22,7 @@ Page({
       value: ''
     }]
   },
+
   goodsImage: function (e) {
     var that = this;
     wx.chooseImage({
@@ -179,18 +181,23 @@ Page({
   },
   contentInput: function (e) {
     this.setData({
+      contentLength: e.detail.cursor,
       content: e.detail.value,
     });
   },
   submitFeedback: function (e) {
-    // if (!app.globalData.hasLogin) {
-    //   wx.navigateTo({
-    //     url: "/pages/auth/login/login"
-    //   });
-    // }
+    if (!app.globalData.hasLogin) {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    }
     let that = this;
-    if (that.data.content == '') {
+    if (that.data.Commodityname == '') {
       util.showErrorToast('请输入商品名称');
+      return false;
+    }
+    if (that.data.content == '') {
+      util.showErrorToast('请输入商品备注');
       return false;
     }
     var signFormList = this.data.signFormList;
@@ -203,7 +210,7 @@ Page({
         return false;
       }
     }
-    var remark="商品名称："+that.data.content +";"+signFormText;
+    var remark="商品名称："+that.data.Commodityname +";"+signFormText;
     console.log(remark);
     if (that.data.goodsUrls == '') {
       util.showErrorToast('请上传商品图片');
@@ -227,8 +234,7 @@ Page({
       goods_img: that.data.goodsUrls,
       gallery: that.data.picUrls,
       goodsDetailImg :that.data.detailUrls,
-      //goodsDetailRemark :that.data.goodsDetailRemark,
-      goodsDetailRemark :'1',
+      goodsDetailRemark :that.data.content
     }, 'POST').then(function (res) {
       wx.hideLoading();
       if (res.errno === 0) {
@@ -246,6 +252,7 @@ Page({
                 size: '',
                 value: ''
               }],
+              Commodityname:'',
               content: '',
               contentLength: 0,
               hasPicture: false,
@@ -264,6 +271,11 @@ Page({
         util.showErrorToast(res.errmsg);
       }
 
+    });
+  },
+  CommoditynameInput: function (e) {
+    this.setData({
+      Commodityname: e.detail.value,
     });
   },
   //添加

@@ -172,3 +172,8 @@ page {
   left: 0;
   z-index: 8;
 }
+.form-item .picker_av{
+width: 100%;
+height: 116rpx;
+line-height: 116rpx;
+}
