@@ -17,7 +17,7 @@
 				</view>
 				<view class="van_cell_value">
 					<view class="van_body">
-						<input class="mobile" maxlength="11" type="number" placeholder="请输入商品颜色" data-index="{{index}}" bindinput="ColorInput" />
+						<input class="mobile" maxlength="11"  placeholder="请输入商品颜色" data-index="{{index}}" bindinput="ColorInput" />
 					</view>
 				</view>
 			</view>
@@ -27,7 +27,7 @@
 				</view>
 				<view class="van_cell_value">
 					<view class="van_body">
-						<input class="mobile" maxlength="11" type="number" placeholder="请输入商品规格" data-index="{{index}}" bindinput="SizeInput"/>
+						<input class="mobile" maxlength="11" placeholder="请输入商品规格" data-index="{{index}}" bindinput="SizeInput"/>
 					</view>
 				</view>
 			</view>
@@ -37,7 +37,7 @@
 				</view>
 				<view class="van_cell_value">
 					<view class="van_body">
-						<input class="mobile" maxlength="11" type="number" placeholder="请输入商品库存" data-index="{{index}}" bindinput="ValueInput"/>
+						<input class="mobile" maxlength="11"  placeholder="请输入商品库存" data-index="{{index}}" bindinput="ValueInput"/>
 					</view>
 				</view>
 			</view>
