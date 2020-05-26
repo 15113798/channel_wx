@@ -19,11 +19,11 @@
 
       <el-table-column align="center" min-width="100px" label="手机号码" prop="tel"/>
 
-      <!-- <el-table-column align="center" min-width="300px" label="区域地址">
+      <el-table-column align="center" min-width="300px" label="区域地址">
         <template slot-scope="scope">
           {{ scope.row.province + scope.row.city + scope.row.county }}
         </template>
-      </el-table-column>-->
+      </el-table-column>
 
       <el-table-column align="center" min-width="300px" label="详细地址" prop="addressDetail"/>
 

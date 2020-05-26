@@ -7,6 +7,9 @@
         <el-form-item label="商品备注" prop="goodsSn">
           <div class="">  {{goods.appletRemark}} </div>
         </el-form-item>
+        <el-form-item label="商品详情备注" prop="goodsSn">
+          <div class="">  {{goods.appletDetailRemark}} </div>
+        </el-form-item>
         <el-form-item label="商品编号" prop="goodsSn">
           <el-input v-model="goods.goodsSn"/>
         </el-form-item>
@@ -415,7 +418,7 @@ export default {
             title: '成功',
             message: '创建成功'
           })
-          this.$router.push({ path: '/goods/Unsoldlist' })
+          this.$router.push({ path: '/goods/list' })
         })
         .catch(response => {
           MessageBox.alert('业务错误：' + response.data.errmsg, '警告', {
